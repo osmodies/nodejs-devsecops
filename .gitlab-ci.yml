@@ -1,0 +1,36 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+  - release
+  - preprod
+  - integration
+  - prod
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm test
+
+integration:
+  stage: integration
+  script:
+    - echo "This is an integration step"
+
+prod:
+  stage: prod
+  script:
+    - echo "This is a deploy step"
