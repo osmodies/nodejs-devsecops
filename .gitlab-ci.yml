@@ -1,5 +1,9 @@
 image: node:latest
 
+cache:
+  paths:
+  - node_modules/
+
 stages:
   - build
   - test
@@ -8,20 +12,10 @@ stages:
   - integration
   - prod
 
-cache:
-  paths:
-    - node_modules/
-
-install_dependencies:
-  stage: build
-  script:
-    - npm install
-  artifacts:
-    paths:
-      - node_modules/
-
 test:
   stage: test
+  before_script:
+    - npm install
   script:
     - npm test
 
