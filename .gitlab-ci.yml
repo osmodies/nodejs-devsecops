@@ -14,10 +14,8 @@ stages:
 
 test:
   stage: test
-  before_script:
-    - npm install
   script:
-    - npm test
+    - echo "This is an test step"
 
 integration:
   stage: integration
